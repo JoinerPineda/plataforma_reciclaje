@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Reciclaje - Login y Panel de Control</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Login -->
+    <div id="loginContainer" class="login-container">
+        <h2>Bienvenido a la Plataforma de Reciclaje</h2>
+        <p>Conéctate con tu cuenta para gestionar tus recogidas y ver el impacto que generas.</p>
+        <form id="loginForm">
+            <label for="username">Usuario</label>
+            <input type="text" id="username" placeholder="Ingresa tu usuario" required>
+            
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" placeholder="Ingresa tu contraseña" required>
+            
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+        <div id="loginMessage"></div>
+    </div>
+
+    <!-- Panel de Control -->
+    <div id="dashboardContainer" class="dashboard-container" style="display: none;">
+        <header>
+            <h1>Bienvenido, [Nombre del Usuario]</h1>
+            <p>¡Gracias por contribuir al reciclaje y cuidado del medio ambiente!</p>
+        </header>
+
+        <section class="recycling-summary">
+            <h2>Tu Impacto en el Reciclaje</h2>
+            <div class="impact-cards">
+                <div class="card">
+                    <h3>Total de Recogidas</h3>
+                    <p id="totalRecogidas">5</p>
+                </div>
+                <div class="card">
+                    <h3>Residuos Reciclados (kg)</h3>
+                    <p id="totalResiduos">15.5</p>
+                </div>
+                <div class="card">
+                    <h3>CO₂ Ahorrado (kg)</h3>
+                    <p id="co2Ahorrado">7.8</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-access">
+            <h2>Accesos Rápidos</h2>
+            <div class="buttons">
+                <button onclick="requestPickup()">Solicitar Recogida</button>
+                <button onclick="viewHistory()">Historial de Reciclaje</button>
+                <button onclick="findCenters()">Centros de Reciclaje Cercanos</button>
+            </div>
+        </section>
+
+        <section class="notifications">
+            <h2>Notificaciones</h2>
+            <ul id="notificationList">
+                <li>No tienes nuevas notificaciones.</li>
+            </ul>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
