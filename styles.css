@@ -45,3 +45,91 @@ body {
 .login-container button {
     padding: 0
 }
+
+/* Formulario de Solicitud de Recogida */
+.pickup-form-container {
+    background-color: #ffffff;
+    width: 80%;
+    max-width: 500px;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.pickup-form-container h2 {
+    color: #43a047;
+    margin-bottom: 1rem;
+}
+
+.pickup-form-container label {
+    display: block;
+    margin: 0.5rem 0 0.2rem;
+    font-weight: bold;
+}
+
+.pickup-form-container input,
+.pickup-form-container select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.2rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.pickup-form-container button {
+    padding: 0.75rem;
+    margin-top: 1rem;
+    background-color: #43a047;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.pickup-form-container button:hover {
+    background-color: #388e3c;
+}
+
+#pickupMessage {
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+/* Historial de Reciclaje */
+.recycling-history-container {
+    background-color: #ffffff;
+    width: 80%;
+    max-width: 700px;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.recycling-history-container h2 {
+    color: #43a047;
+    margin-bottom: 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #e0f7fa;
+    color: #00796b;
+}
+
+tbody tr:hover {
+    background-color: #f1f8e9;
+}

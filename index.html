@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Login -->
+    
     <div id="loginContainer" class="login-container">
         <h2>Bienvenido a la Plataforma de Reciclaje</h2>
         <p>Conéctate con tu cuenta para gestionar tus recogidas y ver el impacto que generas.</p>
@@ -23,10 +23,9 @@
         <div id="loginMessage"></div>
     </div>
 
-    <!-- Panel de Control -->
     <div id="dashboardContainer" class="dashboard-container" style="display: none;">
         <header>
-            <h1>Bienvenido, [Nombre del Usuario]</h1>
+            <h1>Bienvenido Joiner</h1>
             <p>¡Gracias por contribuir al reciclaje y cuidado del medio ambiente!</p>
         </header>
 
@@ -52,7 +51,7 @@
             <h2>Accesos Rápidos</h2>
             <div class="buttons">
                 <button onclick="requestPickup()">Solicitar Recogida</button>
-                <button onclick="viewHistory()">Historial de Reciclaje</button>
+                <button onclick="showRecyclingHistory()">Historial de Reciclaje</button>
                 <button onclick="findCenters()">Centros de Reciclaje Cercanos</button>
             </div>
         </section>
@@ -64,6 +63,50 @@
             </ul>
         </section>
     </div>
+
+    <!-- Formulario de Solicitud de Recogida -->
+    <div id="pickupFormContainer" class="pickup-form-container" style="display: none;">
+    <h2>Solicitar Recogida de Residuos</h2>
+    <form id="pickupForm">
+        <label for="pickupDate">Fecha de Recogida:</label>
+        <input type="date" id="pickupDate" required>
+
+        <label for="pickupLocation">Ubicación:</label>
+        <input type="text" id="pickupLocation" placeholder="Ingresa tu dirección" required>
+
+        <label for="wasteType">Tipo de Residuo:</label>
+        <select id="wasteType" required>
+            <option value="plastico">Plástico</option>
+            <option value="vidrio">Vidrio</option>
+            <option value="papel">Papel</option>
+            <option value="metal">Metal</option>
+            <option value="organico">Orgánico</option>
+        </select>
+
+        <button type="submit">Confirmar Solicitud</button>
+        <button type="button" onclick="goBackToDashboard()">Cancelar</button>
+    </form>
+    <div id="pickupMessage"></div>
+    </div>
+
+    <!-- Historial de Reciclaje -->
+<div id="recyclingHistoryContainer" class="recycling-history-container" style="display: none;">
+    <h2>Historial de Reciclaje</h2>
+    <table id="recyclingHistoryTable">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Ubicación</th>
+                <th>Tipo de Residuo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Las solicitudes se agregarán aquí dinámicamente -->
+        </tbody>
+    </table>
+    <button onclick="goBackToDashboard()">Volver al Panel</button>
+</div>
+
 
     <script src="script.js"></script>
 </body>
