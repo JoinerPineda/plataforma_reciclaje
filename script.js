@@ -161,3 +161,81 @@ document.getElementById("pickupForm").addEventListener("submit", function(event)
         document.getElementById("pickupMessage").innerText = "";
     }, 2000);
 });
+
+// Mostrar el mapa y la lista de centros de reciclaje
+function showRecyclingCenters() {
+    document.getElementById("dashboardContainer").style.display = "none";
+    document.getElementById("recyclingCentersContainer").style.display = "block";
+
+    // Inicializa el mapa centrado en Manizales
+const map = L.map('map').setView([5.0639, -75.5174], 13); // Coordenadas iniciales
+
+// Agrega el mapa base desde OpenStreetMap
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+// Agrega los marcadores para los centros de reciclaje
+const locations = [
+    { name: "Centro Reciclar", coords: [5.0689, -75.5174], address: "Calle 10 #15-20" },
+    { name: "EcoManizales", coords: [5.0630, -75.5156], address: "Carrera 23 #45-10" },
+    { name: "Reciclaje Los Andes", coords: [5.0582, -75.5205], address: "Av. Santander #25-60" }
+];
+
+// Itera sobre las ubicaciones para agregar cada marcador al mapa
+locations.forEach(location => {
+    L.marker(location.coords).addTo(map)
+        .bindPopup(`<b>${location.name}</b><br>${location.address}`);
+});
+
+
+        // Agregar los centros al mapa y a la lista
+        const list = document.getElementById("recyclingCentersList");
+        centers.forEach(center => {
+            // Crear marcador en el mapa
+            L.marker(center.coords).addTo(window.recyclingMap)
+                .bindPopup(`<strong>${center.name}</strong><br>${center.address}`);
+
+            // Agregar centro a la lista
+            const listItem = document.createElement("li");
+            listItem.textContent = `${center.name} - ${center.address}`;
+            list.appendChild(listItem);
+
+            // Función para mostrar una sección y ocultar las demás
+function showSection(sectionId) {
+    // Ocultar todas las secciones
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => {
+        section.style.display = 'none';
+    });
+
+    // Mostrar la sección seleccionada
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+        targetSection.style.display = 'block';
+    }
+}
+
+// Listeners para los botones de navegación
+document.getElementById('solicitar-recogida-btn').addEventListener('click', () => {
+    showSection('solicitar-recogida');
+});
+
+document.getElementById('historial-reciclaje-btn').addEventListener('click', () => {
+    showSection('historial-reciclaje');
+});
+
+document.getElementById('centros-reciclaje-btn').addEventListener('click', () => {
+    showSection('centros-reciclaje');
+});
+
+// Botones "Volver al Panel"
+const backButtons = document.querySelectorAll('.back-to-panel');
+backButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        showSection('panel-principal');
+    });
+});
+
+        });
+    }

@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plataforma de Reciclaje - Login y Panel de Control</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 </head>
 <body>
     
@@ -52,7 +55,7 @@
             <div class="buttons">
                 <button onclick="requestPickup()">Solicitar Recogida</button>
                 <button onclick="showRecyclingHistory()">Historial de Reciclaje</button>
-                <button onclick="findCenters()">Centros de Reciclaje Cercanos</button>
+                <button onclick="showRecyclingCenters()">Centros de Reciclaje</button>
             </div>
         </section>
 
@@ -107,6 +110,15 @@
     <button onclick="goBackToDashboard()">Volver al Panel</button>
 </div>
 
+<!-- Localización de Centros de Reciclaje -->
+<div id="recyclingCentersContainer" style="display: none;">
+    <h2>Centros de Reciclaje Cercanos</h2>
+    <div id="map" style="height: 400px; width: 100%;"></div>
+    <ul id="recyclingCentersList">
+        <!-- Lista dinámica de centros de reciclaje -->
+    </ul>
+    <button onclick="goBackToDashboard()">Volver al Panel</button>
+</div>
 
     <script src="script.js"></script>
 </body>
