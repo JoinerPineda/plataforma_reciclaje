@@ -163,31 +163,27 @@ document.getElementById("pickupForm").addEventListener("submit", function(event)
 });
 
 // Mostrar el mapa y la lista de centros de reciclaje
+// Mostrar el mapa y la lista de centros de reciclaje
 function showRecyclingCenters() {
     document.getElementById("dashboardContainer").style.display = "none";
     document.getElementById("recyclingCentersContainer").style.display = "block";
 
-    // Inicializa el mapa centrado en Manizales
-const map = L.map('map').setView([5.0639, -75.5174], 13); // Coordenadas iniciales
+    // Crear el mapa si aún no existe
+    if (!window.recyclingMap) {
+        // Inicializar el mapa
+        window.recyclingMap = L.map('map').setView([5.0703, -75.5138], 13); // Coordenadas de Manizales
 
-// Agrega el mapa base desde OpenStreetMap
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+        // Agregar un mapa base
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(window.recyclingMap);
 
-// Agrega los marcadores para los centros de reciclaje
-const locations = [
-    { name: "Centro Reciclar", coords: [5.0689, -75.5174], address: "Calle 10 #15-20" },
-    { name: "EcoManizales", coords: [5.0630, -75.5156], address: "Carrera 23 #45-10" },
-    { name: "Reciclaje Los Andes", coords: [5.0582, -75.5205], address: "Av. Santander #25-60" }
-];
-
-// Itera sobre las ubicaciones para agregar cada marcador al mapa
-locations.forEach(location => {
-    L.marker(location.coords).addTo(map)
-        .bindPopup(`<b>${location.name}</b><br>${location.address}`);
-});
-
+        // Marcadores de ejemplo
+        const centers = [
+            { name: "Centro Reciclar", coords: [5.073, -75.514], address: "Calle 10 #15-20" },
+            { name: "EcoManizales", coords: [5.064, -75.520], address: "Carrera 23 #45-10" },
+            { name: "Reciclaje Los Andes", coords: [5.078, -75.511], address: "Av. Santander #25-60" },
+        ];
 
         // Agregar los centros al mapa y a la lista
         const list = document.getElementById("recyclingCentersList");
@@ -200,6 +196,9 @@ locations.forEach(location => {
             const listItem = document.createElement("li");
             listItem.textContent = `${center.name} - ${center.address}`;
             list.appendChild(listItem);
+        });
+    }
+}
 
             // Función para mostrar una sección y ocultar las demás
 function showSection(sectionId) {
@@ -236,6 +235,3 @@ backButtons.forEach(button => {
         showSection('panel-principal');
     });
 });
-
-        });
-    }
