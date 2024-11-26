@@ -70,6 +70,8 @@ function requestPickup() {
 // Volver al panel de control
 function goBackToDashboard() {
     document.getElementById("pickupFormContainer").style.display = "none";
+    document.getElementById("recyclingHistoryContainer").style.display = "none";
+    document.getElementById("recyclingCentersContainer").style.display = "none";
     document.getElementById("dashboardContainer").style.display = "block";
 }
 
@@ -162,7 +164,6 @@ document.getElementById("pickupForm").addEventListener("submit", function(event)
     }, 2000);
 });
 
-// Mostrar el mapa y la lista de centros de reciclaje
 // Mostrar el mapa y la lista de centros de reciclaje
 function showRecyclingCenters() {
     document.getElementById("dashboardContainer").style.display = "none";
